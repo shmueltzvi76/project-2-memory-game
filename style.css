@@ -1,0 +1,486 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, hsl(240, 42%, 39%) 0%, hsl(300, 75%, 23%) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.container {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0px 15px 35px hsla(0, 0%, 0%, 0.33);
+}
+
+.selection-screen {
+    display: block;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.main-header h1 {
+    font-size: 2.2em;
+    color: hsl(0, 0%, 20%);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: hsla(0, 0%, 40%);
+}
+
+.option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px auto 0 auto;
+    max-width: 400px;
+}
+
+.last-option {
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, hsl(240, 42%, 39%, 72%) 0%, hsla(300, 75%, 23%, 72%) 100%);
+    color: white;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.option-btn:hover {
+    background: linear-gradient(135deg, hsl(240, 42%, 39%, 85%) 0%, hsla(300, 75%, 23%, 85%) 100%);
+}
+
+.option-btn:active {
+    background: linear-gradient(135deg, hsl(241, 43%, 40%) 0%, hsla(301, 76%, 24%) 100%);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    color: brown;
+    font-size: 1.05em;
+    font-weight: bold;
+}
+
+.loading.show {
+    display: block;
+}
+
+.game-screen {
+    display: none;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.game-header h2 {
+    font-size: 1.15em;
+    color: hsl(0, 0%, 20%);
+}
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 9px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    background: hsl(210, 17%, 98%);
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px hsla(0, 0%, 0%, 0.1);
+    border: 1px solid hsla(210, 17%, 93%, 0.6);
+}
+
+.stat-icon {
+    font-size: 1.1em;
+    margin-left: 8px;
+}
+
+.stat-content {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: gray;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.stat-value {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: hsl(203, 83%, 55%);
+}
+
+.wrong-count {
+    color: hsla(0, 100%, 50%, 0.502);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 0 auto 10px auto;
+    max-width: 500px;
+    padding: 15px;
+    background: hsl(210, 17%, 98%);
+    border-radius: 15px;
+    box-shadow: inset 2px 2px 5px 6px hsla(0, 0%, 0%, 0.15);
+}
+
+.card {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    box-shadow: 0 3px 10px hsla(0, 0%, 0%, 0.1);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    transform: rotateY(180deg);
+    border: 2px solid hsl(120, 80%, 36%);
+    pointer-events: none;
+}
+
+.card.wrong {
+    animation: wrong-shake 0.3s ease-in-out;
+}
+
+@keyframes wrong-shake {
+    0%, 100% {
+        transform: translateX(0) rotateY(180deg);
+    }
+    50% {
+        transform: translateX(-3px) rotateY(180deg);
+    }
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-front {
+    background: linear-gradient(135deg, hsl(240, 42%, 39%) 0%, hsl(300, 75%, 23%) 100%);
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.3);
+}
+
+.card-back {
+    background: white;
+    transform: rotateY(180deg);
+    flex-direction: column;
+    padding: 8px;
+    border: 2px solid hsl(0, 0%, 93%);
+}
+
+.card-back img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 6px;
+}
+
+.card-name {
+    font-size: 0.78em;
+    font-weight: bold;
+    color: hsl(0, 0%, 20%);
+    margin-top: 4px;
+    text-align: center;
+    line-height: 1.1;
+    transition: none;
+}
+
+.winner-message {
+    margin: 5px 20px;
+}
+
+.winner-message.show {
+    display: block;
+}
+
+.winner-content {
+    background: linear-gradient(135deg, hsl(145, 46%, 61%) 0%, hsl(148, 48%, 41%) 100%);
+    color: white;
+    padding: 9px;
+    margin: 0 20px 0 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+}
+
+.winner-content h3 {
+    font-size: 1.4em;
+    margin-bottom: 2px;
+}
+
+.winner-content p {
+    margin: 5px;
+}
+
+.final-stats {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 0 auto;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.final-stat {
+    background-color: hsl(0, 0%, 100%, 0.15);
+    padding: 6px 10px;
+    border-radius: 10px;
+    min-width: 90px;
+}
+
+.final-label {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 5px;
+    transform: translateX(-5%);
+}
+
+.final-value {
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.game-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.btn {
+    padding: 7px 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: hsl(210, 17%, 98%);
+    color: hsl(210, 9%, 31%);
+    border: 2px solid hsl(210, 14%, 89%);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, hsl(240, 42%, 39%, 72%) 0%, hsla(300, 75%, 23%, 72%) 100%);
+    color: white;
+    box-shadow: 0 3px 20px hsla(229, 76%, 66%, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, hsl(240, 42%, 39%, 85%) 0%, hsla(300, 75%, 23%, 85%) 100%);
+}
+
+.btn-primary:active {
+    background: linear-gradient(135deg, hsl(241, 43%, 40%) 0%, hsla(301, 76%, 24%) 100%);
+}
+
+.footer {
+    background: hsla(0, 0%, 0%, 0.6);
+    backdrop-filter: blur(15px);
+    border-top: 2px solid hsla(0, 0%, 100%, 0.2);
+    left: 0;
+    right: 0;
+    position: fixed;
+    bottom: -140px;
+    padding: 15px 20px;
+    min-height: 75px;
+    transition: bottom 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.footer:hover {
+    bottom: 0px;
+}
+
+.footer::before {
+    content: "⬆️ Contact Info";
+    position: absolute;
+    background: hsla(0, 0%, 100%, 0.2);
+    border-radius: 8px 8px 0 0;
+    color: white;
+    font-size: 12px;
+    margin: 5px;
+    padding: 4px 12px;
+    top: -31px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer:hover::before {
+    opacity: 0;
+}
+
+.footer-container {
+    display: flex;
+    margin: auto;
+    gap: 20px;
+    max-width: 1200px;
+}
+
+.creator-card, .contact-card, .copyright-card {
+    background: hsla(0, 0%, 100%, 0.10);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(0, 0%, 100%, 0.20);
+    color: hsl(0, 0%, 95%);
+    border-radius: 12px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    padding: 10px 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.creator-card:hover, .contact-card:hover, .copyright-card:hover {
+    background: hsla(0, 0%, 100%, 0.20);
+    border-color: hsla(0, 0%, 100%, 0.40);
+    transform: translateY(-3px);
+}
+
+.creator-card {
+    flex-direction: row-reverse;
+    gap: 12px;
+    align-items: center;
+}
+
+.avatar {
+    background: hsla(210, 100%, 70%, 0.3);
+    border: 1px solid hsla(210, 100%, 80%, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.info h4 {
+    color: white;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.info p {
+    color: hsl(0, 0%, 85%);
+    margin: 1px;
+    font-size: 12px;
+}
+
+.contact-card {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-card h4 {
+    color: white;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.phone-link, .email-link {
+    text-decoration: none;
+    color: lightblue;
+    padding: 6px 0px 0px 0px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.phone-link:hover {
+    color: hsl(120, 70%, 80%);
+    background: hsla(120, 50%, 50%, 0.33);
+    text-shadow: 0 2px 4px black;
+    border-radius: 6px;
+    padding: 1px 2px;
+    transform: scale(1.02);
+}
+
+.email-link:hover {
+    color: hsl(60, 80%, 80%);
+    background: hsla(60, 50%, 50%, 0.33);
+    text-shadow: 0 2px 4px black;
+    border-radius: 6px;
+    transform: scale(1.02);
+    padding: 1px 2px;
+}
+
+.copyright-card {
+    text-align: center;
+    gap: 4px;
+    flex-direction: column;
+}
+
+.copyright-card p {
+    font-size: clamp(10px, 1.5vw, 14px);
+    margin: 3px;
+    color: white;
+}
+
+.small:hover {
+    background: hsla(0, 100%, 50%, 0.33);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.514);
+    transform: scale(1.05);
+    border-radius: 6px;
+    padding: 1px 2px;
+    transition: all 0.1s ease-in;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>משחק הזיכרון</title>
+</head>
+<body>
+    <header class="container">
+        <div class="selection-screen" id="selectionScreen">
+            <div class="main-header">
+                <h1>🧩 משחק הזיכרון</h1>
+                <p class="subtitle">בחר נושא ואתחל לשחק!</p>
+            </div>
+            <div class="option-buttons">
+                <button class="option-btn" data-theme="harry-potter">
+                    ⚡ גיבורי הארי פוטר
+                </button>
+                <button class="option-btn" data-theme="dogs">
+                    🐕 כלבים חמודים
+                </button>
+                <button class="option-btn" data-theme="countries">
+                    🏳️ דגלי מדינות
+                </button>
+                <button class="option-btn last-option"  data-theme="random">
+                    🎲 הפתעה אקראית
+                </button>
+            </div>
+            <div class="loading" id="loading">טוען משחק...</div>
+        </div>
+        <div class="game-screen" id="gameScreen">
+            <div class="game-header">
+                <h2 id="themeName"></h2>
+            </div>
+            <div class="game-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">זמן</div>
+                        <div class="stat-value" id="timer">00:00</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-content">
+                        <div class="stat-label">טעויות</div>
+                        <div class="stat-value wrong-count" id="wrongMoves">0</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-label">זוגות</div>
+                        <div class="stat-value">
+                            <span id="matches">0</span>/8
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-board" id="gameBoard">
+            </div>
+            <div class="winner-message" id="winnerMessage">
+                <div class="winner-content">
+                    <h3>🎉 כל הכבוד! 🎉</h3>
+                    <p>סיימתם את המשחק בהצלחה!</p>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span class="final-label">זמן סיום:</span>
+                            <span class="final-value" id="finalTime">00:00</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="final-label">טעויות:</span>
+                            <span class="final-value" id="finalWrongMoves">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-actions">
+                <button class="btn btn-secondary" id="backBtn">
+                    🏠 חזרה
+                </button>
+                <button class="btn btn-primary" id="restartBtn">
+                    🔄 משחק חדש
+                </button>
+            </div>
+        </div>
+    </header>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="copyright-card">
+                <p class="small">❤️נעשה באהבה בשבילך</p>
+                <div class="right-container">
+                    <p>All rights reserved</p>
+                    <p>&copy; 2025</p>
+                </div>
+            </div>
+            <div class="contact-card">
+                <h4>📞 Contact Details</h4>
+                <a href="tel:+972539311073" class="phone-link">053-931-1073</a>
+                <a href="mailto:shmueltzvi76@gmail.com" class="email-link">shmueltzvi76@gmail.com</a>
+            </div>
+            <div class="creator-card">
+                <div class="avatar">👨‍💻</div>
+                <div class="info">
+                    <h4>Samuel Tzvi</h4>
+                    <p>Full Stack Developer</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
