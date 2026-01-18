@@ -523,11 +523,15 @@ body {
     }
 
     .footer {
-        bottom: -240px;
+        bottom: -400px;
         padding: 12px 10px;
     }
 
     .footer:hover {
+        bottom: 0;
+    }
+
+    .footer:active {
         bottom: 0;
     }
 
