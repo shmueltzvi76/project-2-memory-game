@@ -8,27 +8,28 @@
     <title>משחק הזיכרון</title>
 </head>
 <body>
+    <button class="language-toggle" id="languageToggle">English</button>
     <header class="container">
         <div class="selection-screen" id="selectionScreen">
             <div class="main-header">
-                <h1>🧩 משחק הזיכרון</h1>
-                <p class="subtitle">בחר נושא ואתחל לשחק!</p>
+                <h1 data-i18n="main-title">🧩 משחק הזיכרון</h1>
+                <p class="subtitle" data-i18n="subtitle">בחר נושא ואתחל לשחק!</p>
             </div>
             <div class="option-buttons">
-                <button class="option-btn" data-theme="harry-potter">
+                <button class="option-btn" data-theme="harry-potter" data-i18n="theme-harry-potter">
                     ⚡ גיבורי הארי פוטר
                 </button>
-                <button class="option-btn" data-theme="dogs">
+                <button class="option-btn" data-theme="dogs" data-i18n="theme-dogs">
                     🐕 כלבים חמודים
                 </button>
-                <button class="option-btn" data-theme="countries">
+                <button class="option-btn" data-theme="countries" data-i18n="theme-countries">
                     🏳️ דגלי מדינות
                 </button>
-                <button class="option-btn last-option"  data-theme="random">
+                <button class="option-btn last-option"  data-theme="random" data-i18n="theme-random">
                     🎲 הפתעה אקראית
                 </button>
             </div>
-            <div class="loading" id="loading">טוען משחק...</div>
+            <div class="loading" id="loading" data-i18n="loading">טוען משחק...</div>
         </div>
         <div class="game-screen" id="gameScreen">
             <div class="game-header">
@@ -38,21 +39,21 @@
                 <div class="stat-item">
                     <div class="stat-icon">⏱️</div>
                     <div class="stat-content">
-                        <div class="stat-label">זמן</div>
+                        <div class="stat-label" data-i18n="stat-time">זמן</div>
                         <div class="stat-value" id="timer">00:00</div>
                     </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-icon">❌</div>
                     <div class="stat-content">
-                        <div class="stat-label">טעויות</div>
+                        <div class="stat-label" data-i18n="stat-errors">טעויות</div>
                         <div class="stat-value wrong-count" id="wrongMoves">0</div>
                     </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-icon">✅</div>
                     <div class="stat-content">
-                        <div class="stat-label">זוגות</div>
+                        <div class="stat-label" data-i18n="stat-pairs">זוגות</div>
                         <div class="stat-value">
                             <span id="matches">0</span>/8
                         </div>
@@ -63,25 +64,25 @@
             </div>
             <div class="winner-message" id="winnerMessage">
                 <div class="winner-content">
-                    <h3>🎉 כל הכבוד! 🎉</h3>
-                    <p>סיימתם את המשחק בהצלחה!</p>
+                    <h3 data-i18n="winner-title">🎉 כל הכבוד! 🎉</h3>
+                    <p data-i18n="winner-message">סיימתם את המשחק בהצלחה!</p>
                     <div class="final-stats">
                         <div class="final-stat">
-                            <span class="final-label">זמן סיום:</span>
+                            <span class="final-label" data-i18n="final-time-label">זמן סיום:</span>
                             <span class="final-value" id="finalTime">00:00</span>
                         </div>
                         <div class="final-stat">
-                            <span class="final-label">טעויות:</span>
+                            <span class="final-label" data-i18n="final-errors-label">טעויות:</span>
                             <span class="final-value" id="finalWrongMoves">0</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="game-actions">
-                <button class="btn btn-secondary" id="backBtn">
+                <button class="btn btn-secondary" id="backBtn" data-i18n="btn-back">
                     🏠 חזרה
                 </button>
-                <button class="btn btn-primary" id="restartBtn">
+                <button class="btn btn-primary" id="restartBtn" data-i18n="btn-restart">
                     🔄 משחק חדש
                 </button>
             </div>
@@ -90,14 +91,14 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="copyright-card">
-                <p class="small">❤️נעשה באהבה בשבילך</p>
+                <p class="small" data-i18n="footer-love">❤️נעשה באהבה בשבילך</p>
                 <div class="right-container">
-                    <p>All rights reserved</p>
+                    <p data-i18n="footer-rights">All rights reserved</p>
                     <p>&copy; 2025</p>
                 </div>
             </div>
             <div class="contact-card">
-                <h4>📞 Contact Details</h4>
+                <h4 data-i18n="footer-contact-title">📞 Contact Details</h4>
                 <a href="tel:+972539311073" class="phone-link">053-931-1073</a>
                 <a href="mailto:shmueltzvi76@gmail.com" class="email-link">shmueltzvi76@gmail.com</a>
             </div>
@@ -105,7 +106,7 @@
                 <div class="avatar">👨‍💻</div>
                 <div class="info">
                     <h4>Samuel Tzvi</h4>
-                    <p>Full Stack Developer</p>
+                    <p data-i18n="footer-role">Full Stack Developer</p>
                 </div>
             </div>
         </div>
