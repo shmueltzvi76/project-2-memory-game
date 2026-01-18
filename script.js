@@ -421,25 +421,6 @@ document.addEventListener("DOMContentLoaded", () => {
         changeLanguage(newLanguage);
     });
 
-    // Mobile footer trigger
-    const footerMobileTrigger = document.getElementById('footerMobileTrigger');
-    const footer = document.querySelector('.footer');
-
-    if (footerMobileTrigger) {
-        footerMobileTrigger.addEventListener('click', () => {
-            footer.classList.toggle('show-mobile');
-        });
-
-        // Close footer when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                if (!footer.contains(e.target) && !footerMobileTrigger.contains(e.target)) {
-                    footer.classList.remove('show-mobile');
-                }
-            }
-        });
-    }
-
     // Game buttons
     document.querySelectorAll(".option-btn").forEach(btn => {
         btn.addEventListener("click", () => {
