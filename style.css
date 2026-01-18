@@ -523,7 +523,12 @@ body {
     }
 
     .footer {
+        bottom: -140px;
         padding: 12px 10px;
+    }
+
+    .footer:hover {
+        bottom: 0;
     }
 
     .footer-container {
