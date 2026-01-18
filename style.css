@@ -523,13 +523,7 @@ body {
     }
 
     .footer {
-        bottom: 0;
         padding: 12px 10px;
-        min-height: auto;
-    }
-
-    .footer::before {
-        display: none;
     }
 
     .footer-container {
@@ -541,10 +535,6 @@ body {
         height: auto;
         padding: 12px;
         min-height: 70px;
-    }
-
-    .creator-card {
-        flex-direction: row-reverse;
     }
 
     .contact-card {
