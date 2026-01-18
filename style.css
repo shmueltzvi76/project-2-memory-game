@@ -370,6 +370,18 @@ body {
     bottom: 0px;
 }
 
+.footer:hover .phone-link,
+.footer:hover .email-link {
+    pointer-events: auto;
+    transition-delay: 0.4s;
+}
+
+.phone-link,
+.email-link {
+    pointer-events: none;
+    transition: pointer-events 0s 0s;
+}
+
 .footer::before {
     content: "⬆️ Contact Info";
     position: absolute;
@@ -523,16 +535,16 @@ body {
     }
 
     .footer {
-        bottom: -400px;
+        bottom: calc(-100% + 35px);
         padding: 12px 10px;
-    }
-
-    .footer:hover {
-        bottom: 0;
     }
 
     .footer:active {
         bottom: 0;
+    }
+
+    .footer::before {
+        pointer-events: auto;
     }
 
     .footer-container {
