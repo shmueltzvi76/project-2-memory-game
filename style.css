@@ -537,7 +537,7 @@ body {
     }
 
     .footer {
-        bottom: calc(-100% + 35px);
+        bottom: calc(-100% + 70px);
         padding: 12px 10px;
     }
 
@@ -547,6 +547,7 @@ body {
 
     .footer::before {
         pointer-events: auto;
+        opacity: 1;
     }
 
     .footer-container {
