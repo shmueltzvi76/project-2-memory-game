@@ -365,9 +365,6 @@ body {
     transition: bottom 0.4s ease-in-out;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 .footer:hover {
@@ -469,8 +466,6 @@ body {
 .contact-card {
     flex-direction: column;
     gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
 }
 
 .contact-card h4 {
@@ -486,13 +481,6 @@ body {
     padding: 6px 0px 0px 0px;
     font-size: 14px;
     transition: all 0.2s ease;
-    pointer-events: none;
-}
-
-.footer:hover .phone-link,
-.footer:hover .email-link {
-    pointer-events: auto;
-    transition-delay: 0.5s;
 }
 
 .phone-link:hover {
