@@ -259,6 +259,7 @@ function resetGameState() {
     game.matches = 0
     game.isProcessing = false
     game.finalTime = null
+    game.seenCards = new Set() // Track cards that have been seen before
     const winnerMessage = document.getElementById("winnerMessage");
     winnerMessage.classList.remove("show");
     winnerMessage.style.display = "none";
@@ -293,6 +294,20 @@ function showLoading(show) {
     } else {
         loading.classList.remove("show")
     }
+}
+
+// Preload all images before starting the game
+function preloadImages(images) {
+    return Promise.all(
+        images.map(item => {
+            return new Promise((resolve, reject) => {
+                const img = new Image()
+                img.onload = () => resolve(item)
+                img.onerror = () => reject(new Error(`Failed to load image: ${item.image}`))
+                img.src = item.image
+            })
+        })
+    )
 }
 
 function displayGame() {
@@ -374,14 +389,27 @@ function checkMatch() {
             stopTimer()
             setTimeout(() => {
                 const winnerMessage = document.getElementById("winnerMessage");
-                winnerMessage.style.display = "block"; 
+                winnerMessage.style.display = "block";
                 winnerMessage.classList.add("show");
                 document.getElementById("finalTime").textContent = game.finalTime
                 document.getElementById("finalWrongMoves").textContent = game.wrongMoves
             }, 500)
         }
     } else {
-        game.wrongMoves++
+        // Only count as mistake if at least one card was seen before
+        const firstCardId = `${first}-${firstCard.id}`
+        const secondCardId = `${second}-${secondCard.id}`
+        const firstWasSeen = game.seenCards.has(firstCardId)
+        const secondWasSeen = game.seenCards.has(secondCardId)
+
+        if (firstWasSeen || secondWasSeen) {
+            game.wrongMoves++
+        }
+
+        // Mark these cards as seen for next time
+        game.seenCards.add(firstCardId)
+        game.seenCards.add(secondCardId)
+
         firstEl.classList.add("wrong")
         secondEl.classList.add("wrong")
 
@@ -440,6 +468,8 @@ async function startGame(selectedTheme) {
         resetTimer()
         resetGameState()
         await loadGameData(theme)
+        // Preload all images before showing the game
+        await preloadImages(game.images)
         createGameCards()
         displayGame()
 
