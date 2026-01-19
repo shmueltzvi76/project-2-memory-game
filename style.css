@@ -172,7 +172,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin: 0 auto 10px auto;
-    max-width: 550px;
+    max-width: 500px;
     padding: 15px;
     background: hsl(210, 17%, 98%);
     border-radius: 15px;
@@ -180,7 +180,7 @@ body {
 }
 
 .card {
-    aspect-ratio: 1;
+    aspect-ratio: 0.85;
     border-radius: 10px;
     cursor: pointer;
     position: relative;
