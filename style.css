@@ -180,7 +180,7 @@ body {
 }
 
 .card {
-    aspect-ratio: 1;
+    aspect-ratio: 0.85;
     border-radius: 10px;
     cursor: pointer;
     position: relative;
@@ -246,7 +246,7 @@ body {
 }
 
 .card-name {
-    font-size: 0.78em;
+    font-size: 0.7em;
     font-weight: bold;
     color: hsl(0, 0%, 20%);
     margin-top: 4px;
