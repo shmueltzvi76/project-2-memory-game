@@ -237,6 +237,7 @@ body {
     flex-direction: column;
     padding: 8px;
     border: 2px solid hsl(0, 0%, 93%);
+    overflow: hidden;
 }
 
 .card-back img {
@@ -246,13 +247,16 @@ body {
 }
 
 .card-name {
-    font-size: 0.78em;
+    font-size: 0.7em;
     font-weight: bold;
     color: hsl(0, 0%, 20%);
     margin-top: 4px;
     text-align: center;
     line-height: 1.1;
     transition: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .winner-message {
