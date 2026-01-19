@@ -296,20 +296,6 @@ function showLoading(show) {
     }
 }
 
-// Preload all images before starting the game
-function preloadImages(images) {
-    return Promise.all(
-        images.map(item => {
-            return new Promise((resolve, reject) => {
-                const img = new Image()
-                img.onload = () => resolve(item)
-                img.onerror = () => reject(new Error(`Failed to load image: ${item.image}`))
-                img.src = item.image
-            })
-        })
-    )
-}
-
 function displayGame() {
     showLoading(false)
     document.getElementById("selectionScreen").style.display = "none"
@@ -468,8 +454,6 @@ async function startGame(selectedTheme) {
         resetTimer()
         resetGameState()
         await loadGameData(theme)
-        // Preload all images before showing the game
-        await preloadImages(game.images)
         createGameCards()
         displayGame()
 
