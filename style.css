@@ -237,12 +237,14 @@ body {
     flex-direction: column;
     padding: 8px;
     border: 2px solid hsl(0, 0%, 93%);
+    overflow: hidden;
 }
 
 .card-back img {
     max-width: 90%;
     max-height: 80%;
     border-radius: 6px;
+    object-fit: contain;
 }
 
 .card-name {
