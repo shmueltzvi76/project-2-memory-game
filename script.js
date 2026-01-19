@@ -419,7 +419,7 @@ function checkMatch() {
             game.flippedCards = []
             game.isProcessing = false
             updateStats()
-        }, 400);
+        }, 300);
     }
 
 }
